@@ -18,37 +18,36 @@
 
   <div>
     <%= form.label :result, style: "display: block" %>
-    <%= form.text_field :result %>
+    <%= form.number_field :result %>
   </div>
 
   <div>
     <%= form.label :weight, style: "display: block" %>
-    <%= form.text_field :weight %>
+    <%= form.number_field :weight %>
   </div>
 
   <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.text_field :date %>
+    <%= form.hidden_field :date, :value => Time.now  %>
   </div>
 
   <div>
     <%= form.label :semester_id, style: "display: block" %>
-    <%= form.text_field :semester_id %>
+    <%= form.select :semester_id, options_for_select(Semester.all.map { |s| [s.name, s.id] }),class: "form-select" %>
   </div>
 
   <div>
     <%= form.label :promotion_id, style: "display: block" %>
-    <%= form.text_field :promotion_id %>
+    <%= form.select :promotion_id, options_for_select(Promotion.all.map { |p| [p.name, p.id] }),class: "form-select" %>
   </div>
 
   <div>
     <%= form.label :student_id, style: "display: block" %>
-    <%= form.text_field :student_id %>
+    <%= form.select :student_id, options_for_select(Person.where(type_person_id: TypePerson.find_by(slug: 'STU')).map { |p| [p.lastname, p.id] }),class: "form-select" %>
+    
   </div>
 
-  <div>
-    <%= form.label :teacher_id, style: "display: block" %>
-    <%= form.text_field :teacher_id %>
+  <div>    
+    <%= form.hidden_field :teacher_id, :value => current_person.id  %>
   </div>
 
   <div>

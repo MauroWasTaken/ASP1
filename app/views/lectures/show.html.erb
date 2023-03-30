@@ -3,6 +3,7 @@
 <%= render @lecture %>
 
 <div>
+  <%= link_to "Add a grade", new_grade_path(@lecture) %>
   <%= link_to "Add a promotion", new_lecture_promotion_path(@lecture) %>
   <%= link_to "Edit this lecture", edit_lecture_path(@lecture) %> |
   <%= link_to "Back to lectures", lectures_path %>
