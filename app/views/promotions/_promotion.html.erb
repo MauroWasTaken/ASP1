@@ -18,5 +18,10 @@
     <strong>Teacher:</strong>
     <%= promotion.teacher_id %>
   </p>
-
+  <p>
+    <strong>Students:</strong>
+    <%for student in promotion.people %>
+      <%= student.fullname %> <%if student == promotion.people.last%> <%else%> | <%end%>
+    <%end%>
+  </p>
 </div>

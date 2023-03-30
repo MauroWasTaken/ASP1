@@ -3,6 +3,7 @@
 <%= render @promotion %>
 
 <div>
+  <%= link_to "Add a student", new_person_promotion_path(@promotion) %> |
   <%= link_to "Edit this promotion", edit_promotion_path(@promotion) %> |
   <%= link_to "Back to promotions", promotions_path %>
 

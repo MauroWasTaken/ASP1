@@ -18,17 +18,17 @@
 
   <div>
     <%= form.label :start_date, style: "display: block" %>
-    <%= form.text_field :start_date %>
+    <%= form.date_field :start_date %>
   </div>
 
   <div>
     <%= form.label :end_date, style: "display: block" %>
-    <%= form.text_field :end_date %>
+    <%= form.date_field :end_date %>
   </div>
 
   <div>
     <%= form.label :teacher_id, style: "display: block" %>
-    <%= form.text_field :teacher_id %>
+    <%= form.select :teacher_id, options_for_select(Person.where(type_person_id: TypePerson.find_by(slug: 'TEA')).map { |p| [p.lastname, p.id] }),class: "form-select" %>
   </div>
 
   <div>

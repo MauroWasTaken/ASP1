@@ -2,6 +2,8 @@
 
 <h1>Promotions</h1>
 
+<%= link_to "New promotion", new_promotion_path %>
+
 <div id="promotions">
   <% @promotions.each do |promotion| %>
     <%= render promotion %>
@@ -10,5 +12,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New promotion", new_promotion_path %>

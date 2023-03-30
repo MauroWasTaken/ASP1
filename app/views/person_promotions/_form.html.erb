@@ -13,12 +13,12 @@
 
   <div>
     <%= form.label :promotion_id, style: "display: block" %>
-    <%= form.text_field :promotion_id %>
+    <%= form.select :promotion_id, options_for_select(Promotion.all.map { |p| [p.name, p.id] }),class: "form-select" %>
   </div>
 
   <div>
     <%= form.label :person_id, style: "display: block" %>
-    <%= form.text_field :person_id %>
+    <%= form.select :person_id, options_for_select(Person.where(type_person_id: TypePerson.find_by(slug: 'STU')).map { |p| [p.lastname, p.id] }),class: "form-select" %>
   </div>
 
   <div>
