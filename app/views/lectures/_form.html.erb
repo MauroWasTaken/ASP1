@@ -23,7 +23,7 @@
 
   <div>
     <%= form.label :category_id, style: "display: block" %>
-    <%= form.select :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }),class: "form-select" %>
+    <%= form.select :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }), {}, class: "form-control" %>
   </div>
 
   <div>

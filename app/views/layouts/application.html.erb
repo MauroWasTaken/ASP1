@@ -23,9 +23,9 @@
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
         </ul>
-        <% if @current_user %>
+        <% if current_person %>
           <span class="navbar-text">
-            <%= @current_user.fullname %>
+            <%= current_person.fullname %>
           </span>
           <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-secondary" %>
         <% else %>

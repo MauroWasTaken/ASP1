@@ -1,0 +1,2 @@
+module PersonPromotionsHelper
+end

@@ -1,0 +1,37 @@
+<%= form_with(model: lecture_promotion) do |form| %>
+  <% if lecture_promotion.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(lecture_promotion.errors.count, "error") %> prohibited this lecture_promotion from being saved:</h2>
+
+      <ul>
+        <% lecture_promotion.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :lecture_id, style: "display: block" %>
+    <%= form.select :lecture_id, options_for_select(Lecture.all.map { |l| [l.name, l.id] }),class: "form-select" %>
+  </div>
+  
+  <div>
+    <%= form.label :promotion_id, style: "display: block" %>
+    <%= form.select :promotion_id, options_for_select(Promotion.all.map { |p| [p.name, p.id] }),class: "form-select" %>
+  </div>
+  
+  <div>
+    <%= form.label :semester_id, style: "display: block" %>
+    <%= form.select :semester_id, options_for_select(Semester.all.map { |s| [s.name, s.id] }),class: "form-select" %>
+  </div>
+  
+  <div>
+    <%= form.label :person_id, style: "display: block" %>
+    <%= form.select :person_id, options_for_select(Person.where(type_person_id: TypePerson.find_by(slug: 'TEA')).map { |p| [p.lastname, p.id] }),class: "form-select" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

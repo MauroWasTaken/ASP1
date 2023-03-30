@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :lecture_grades
+  resources :person_promotions
+  resources :promotions
+  resources :lecture_promotions
   resources :lectures
   resources :grades
   devise_for :people, controllers: {

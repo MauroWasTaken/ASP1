@@ -13,5 +13,11 @@
     <strong>Category:</strong>
     <%= lecture.category.name %>
   </p>
-
+  <p>
+    <strong>Promotions:</strong>
+    <%for promotion in lecture.promotions %>
+      <%= promotion.name %></br>
+    <% end %>
+  </p>
+  
 </div>

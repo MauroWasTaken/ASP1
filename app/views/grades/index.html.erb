@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Grades</h1>
-<% if @current_user.teacher? %>
+<% if current_person.teacher? %>
   <%= link_to "New grade", new_grade_path %>
 <% end %>
 

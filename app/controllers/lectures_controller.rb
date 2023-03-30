@@ -3,7 +3,7 @@ class LecturesController < ApplicationController
 
   # GET /lectures or /lectures.json
   def index
-      @lectures = current_user.lectures
+      @lectures = current_person.lectures
   end
 
   # GET /lectures/1 or /lectures/1.json
@@ -12,23 +12,22 @@ class LecturesController < ApplicationController
 
   # GET /lectures/new
   def new
-    if(current_user.teacher?)
+    if(current_person.teacher?)
       @lecture = Lecture.new
     else
-      redirect_to '/grades'
+      redirect_to '/lectures'
     end
   end
 
   # GET /lectures/1/edit
   def edit
-    if(!current_user.teacher?)
-      redirect_to '/grades'
+    if(!current_person.teacher?)
+      redirect_to '/lectures'
     end
   end
 
   # POST /lectures or /lectures.json
   def create
-    if(current_user.teacher?)
       @lecture = Lecture.new(lecture_params)
 
       respond_to do |format|
@@ -39,15 +38,12 @@ class LecturesController < ApplicationController
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @lecture.errors, status: :unprocessable_entity }
         end
-      end
-    else
-      redirect_to '/grades'
-    end  
+      end 
   end
 
   # PATCH/PUT /lectures/1 or /lectures/1.json
   def update
-    if(current_user.teacher?)
+    if(current_person.teacher?)
       respond_to do |format|
         if @lecture.update(lecture_params)
           format.html { redirect_to lecture_url(@lecture), notice: "Lecture was successfully updated." }
@@ -64,7 +60,7 @@ class LecturesController < ApplicationController
 
   # DELETE /lectures/1 or /lectures/1.json
   def destroy
-    if(current_user.teacher?)
+    if(current_person.teacher?)
       @lecture.destroy
 
       respond_to do |format|
@@ -85,6 +81,6 @@ class LecturesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lecture_params
-      params.require(:lecture).permit(:name, :description, :category)
+      params.require(:lecture).permit(:name, :description, :category_id)
     end
 end

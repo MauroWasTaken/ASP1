@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lecture promotions</h1>
+
+<div id="lecture_promotions">
+  <% @lecture_promotions.each do |lecture_promotion| %>
+    <%= render lecture_promotion %>
+    <p>
+      <%= link_to "Show this lecture promotion", lecture_promotion %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New lecture promotion", new_lecture_promotion_path %>

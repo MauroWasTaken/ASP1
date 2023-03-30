@@ -3,9 +3,9 @@ class GradesController < ApplicationController
 
   # GET /grades or /grades.json
   def index
-    if current_user.student?
-      @grades = Grade.where(student_id: current_user.id)
-    elsif current_user.teacher?
+    if current_person.student?
+      @grades = Grade.where(student_id: current_person.id)
+    elsif current_person.teacher?
       @grades = Grade.all
     end
       
@@ -17,7 +17,7 @@ class GradesController < ApplicationController
 
   # GET /grades/new
   def new
-    if(current_user.teacher?)
+    if(current_person.teacher?)
       @grade = Grade.new
     else
       redirect_to '/grades'
@@ -26,14 +26,14 @@ class GradesController < ApplicationController
 
   # GET /grades/1/edit
   def edit
-    if(!current_user.teacher?)
+    if(!current_person.teacher?)
       redirect_to '/grades'
     end  
   end
 
   # POST /grades or /grades.json
   def create
-    if(current_user.teacher?)
+    if(current_person.teacher?)
       @grade = Grade.new(grade_params)
 
       respond_to do |format|
@@ -52,7 +52,7 @@ class GradesController < ApplicationController
 
   # PATCH/PUT /grades/1 or /grades/1.json
   def update
-    if(current_user.teacher?)
+    if(current_person.teacher?)
       respond_to do |format|
         if @grade.update(grade_params)
           format.html { redirect_to grade_url(@grade), notice: "Grade was successfully updated." }
@@ -69,7 +69,7 @@ class GradesController < ApplicationController
 
   # DELETE /grades/1 or /grades/1.json
   def destroy
-    if(current_user.teacher?)
+    if(current_person.teacher?)
       @grade.destroy
 
       respond_to do |format|
