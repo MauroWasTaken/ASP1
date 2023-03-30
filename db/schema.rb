@@ -59,8 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_20_135625) do
   create_table "lectures", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.date "start_date", null: false
-    t.date "end_date", null: false
     t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

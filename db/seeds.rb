@@ -8,8 +8,6 @@ end
 # Create lectures
 10.times do
   Lecture.create!(
-    start_date: Faker::Date.in_date_period(year: 2019, month: 8),
-    end_date: Faker::Date.in_date_period(year: 2020, month: 6),
     name: Faker::Educator.course_name,
     description: Faker::Lorem.paragraph(sentence_count: 3),
     category_id: Category.all.sample.id
@@ -66,7 +64,7 @@ Lecture.all.each do |lecture|
     lecture_id: lecture.id,
     promotion_id: Promotion.all.sample.id,
     semester_id: Semester.all.sample.id,
-    person_id: Person.all.sample.id
+    person_id: Person.where(type_person_id: TypePerson.find_by(slug: 'TEA')).sample.id
   )
 end
 

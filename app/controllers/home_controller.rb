@@ -1,15 +1,11 @@
 class HomeController < ApplicationController
 
     def index
-        if current_user
-            if current_user.teacher?
-                render
-            else
-
-            end
-          else
-            redirect_to '/login'
-          end
+        if current_user.student?
+            redirect_to '/grades'
+        elsif current_user.teacher?
+            redirect_to '/lectures'
+        end
     end
     
 end

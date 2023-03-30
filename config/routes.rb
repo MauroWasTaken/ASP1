@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :lectures
+  resources :grades
   devise_for :people, controllers: {
     sessions: 'people/sessions',
     registrations: 'people/registrations'
