@@ -16,12 +16,12 @@
 
   <p>
     <strong>Teacher:</strong>
-    <%= promotion.teacher_id %>
+    <%= Person.find(promotion.teacher_id).fullname %>
   </p>
   <p>
     <strong>Students:</strong>
     <%for student in promotion.people %>
-      <%= student.fullname %> <%if student == promotion.people.last%> <%else%> | <%end%>
+      <%= student.fullname %> <%if student != promotion.people.last%> | <%end%>
     <%end%>
   </p>
 </div>

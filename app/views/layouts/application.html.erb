@@ -34,7 +34,7 @@
         </ul>
         <% if current_person %>
           <span class="navbar-text">
-            <%= current_person.fullname %>
+            <%= current_person.type_person.name + " "+current_person.fullname %>
           </span>
           <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-secondary" %>
         <% else %>

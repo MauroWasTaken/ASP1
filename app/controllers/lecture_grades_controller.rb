@@ -3,16 +3,21 @@ class LectureGradesController < ApplicationController
 
   # GET /lecture_grades or /lecture_grades.json
   def index
-    @lecture_grades = LectureGrade.all
+    redirect_to '/lectures'
   end
 
   # GET /lecture_grades/1 or /lecture_grades/1.json
   def show
+    redirect_to '/lectures'
   end
 
   # GET /lecture_grades/new
   def new
-    @lecture_grade = LectureGrade.new
+    if current_person.teacher?
+      @lecture_grade = LectureGrade.new
+    else
+      redirect_to '/lectures'
+    end
   end
 
   # GET /lecture_grades/1/edit

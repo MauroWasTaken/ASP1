@@ -21,22 +21,22 @@
 
   <p>
     <strong>Semester:</strong>
-    <%= grade.semester_id %>
+    <%= Semester.find(grade.semester_id).name %>
   </p>
 
   <p>
     <strong>Promotion:</strong>
-    <%= grade.promotion_id %>
+    <%= Promotion.find(grade.promotion_id).name %>
   </p>
-
+  <%if !current_person.student? %>
   <p>
     <strong>Student:</strong>
-    <%= grade.student_id %>
+    <%= Person.find(grade.student_id).fullname %>
   </p>
-
+  <% end %>
   <p>
     <strong>Teacher:</strong>
-    <%= grade.teacher_id %>
+    <%= Person.find(grade.teacher_id).fullname %>
   </p>
 
 </div>

@@ -1,8 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Promotions</h1>
-
-<%= link_to "New promotion", new_promotion_path %>
+<%if current_person.teacher?%>
+  <%= link_to "New promotion", new_promotion_path %>
+<%end%>
 
 <div id="promotions">
   <% @promotions.each do |promotion| %>

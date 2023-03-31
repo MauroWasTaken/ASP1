@@ -3,7 +3,11 @@ class LecturesController < ApplicationController
 
   # GET /lectures or /lectures.json
   def index
+    if current_person.teacher?
       @lectures = current_person.lectures
+    else
+      @lectures = Lecture.all
+    end
   end
 
   # GET /lectures/1 or /lectures/1.json

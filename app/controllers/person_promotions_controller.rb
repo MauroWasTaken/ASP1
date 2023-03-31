@@ -3,20 +3,30 @@ class PersonPromotionsController < ApplicationController
 
   # GET /person_promotions or /person_promotions.json
   def index
-    @person_promotions = PersonPromotion.all
+      redirect_to '/promotions'
   end
 
   # GET /person_promotions/1 or /person_promotions/1.json
   def show
+    redirect_to '/promotions'
   end
 
   # GET /person_promotions/new
   def new
-    @person_promotion = PersonPromotion.new
+    if current_person.teacher?
+      @person_promotion = PersonPromotion.new
+    else
+      redirect_to '/promotions'
+    end
   end
 
   # GET /person_promotions/1/edit
   def edit
+    if current_person.teacher?
+      @person_promotion = PersonPromotion.new
+    else
+      redirect_to '/promotions'
+    end
   end
 
   # POST /person_promotions or /person_promotions.json

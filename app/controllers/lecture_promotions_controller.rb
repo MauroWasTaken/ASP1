@@ -3,11 +3,12 @@ class LecturePromotionsController < ApplicationController
 
   # GET /lecture_promotions or /lecture_promotions.json
   def index
-    @lecture_promotions = LecturePromotion.all
+    redirect_to '/lectures'
   end
 
   # GET /lecture_promotions/1 or /lecture_promotions/1.json
   def show
+    redirect_to '/lectures'
   end
 
   # GET /lecture_promotions/new

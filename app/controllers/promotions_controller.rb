@@ -12,11 +12,20 @@ class PromotionsController < ApplicationController
 
   # GET /promotions/new
   def new
-    @promotion = Promotion.new
+    if current_person.teacher?
+      @promotion = Promotion.new
+    else
+      redirect_to '/promotions'
+    end
   end
 
   # GET /promotions/1/edit
   def edit
+    if current_person.teacher?
+      @promotion = Promotion.new
+    else
+      redirect_to '/promotions'
+    end
   end
 
   # POST /promotions or /promotions.json
