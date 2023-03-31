@@ -9,7 +9,8 @@ class Person < ApplicationRecord
   has_many :student_grades, class_name: "Grade", foreign_key: "student_id"
   has_many :teacher_grades, class_name: "Grade", foreign_key: "teacher_id"
   has_many :teacher_promotions, class_name: "Promotion", foreign_key: "teacher_id"
-  has_many :lectures, through: :teacher_promotions
+  has_many :lecture_promotions, class_name:"LecturePromotion", foreign_key:"person_id" 
+  has_many :lectures, through: :lecture_promotions
   belongs_to :type_person
 
   validates :firstname, presence: true
